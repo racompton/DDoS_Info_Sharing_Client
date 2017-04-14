@@ -10,9 +10,10 @@ import logging
 import logging.handlers
 import platform
 
-#this code doesn't work right now
-#if sys.version_info[0] < 2.7:
-#    raise "Must be using Python 2.7+"
+# If we are running a version of python less than 2.7, then exit and throw up an error.
+if sys.version_info<(2,7,0):
+   sys.stderr.write("You need python 2.7+ or later to run this script\n")
+   exit(1)
 
 parser = argparse.ArgumentParser(description='This script retrieves the list of DDoS attacks that occured the last X number of days and writes it to a file (-f), writes it to syslog (-l) or outputs it to the terminal (if -f or -l are not set).')
 parser.add_argument('-k','--key', help='Specify an API key',required=True)
