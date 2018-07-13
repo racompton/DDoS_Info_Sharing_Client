@@ -2,7 +2,7 @@
 
 import requests
 import json
-import urllib3
+#import urllib3
 from datetime import date, timedelta
 import argparse
 import sys
