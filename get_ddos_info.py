@@ -38,8 +38,8 @@ syslog = args.syslog
 # set date as the number of days specified in the past
 date = date.today() - timedelta(int(days))
 
-# Disable the SSL Cert warnings on a self signed cert (maybe remove this and the verify=False if they get a valid SSL cert!)
-urllib3.disable_warnings()
+# Disable the SSL Cert warnings on a self signed cert
+#urllib3.disable_warnings()
 
 # Set up the payload
 payload = {'username': username, 'api_key': api_key, 'modifiedSince': date, 'limit': limit}
@@ -48,7 +48,7 @@ try:
 # Make the API get request
 # Add verify=False at the end if there is a self signed cert
 # updating for v2 of the API
-    response = requests.get('https://dis-demo2.cablelabs.com/api/v1/data_distribution_resource/', params=payload, verify=False)
+    response = requests.get('https://dis-demo2.cablelabs.com/api/v1/data_distribution_resource/', params=payload)
 
 except requests.exceptions.HTTPError as e:
     print (e)
@@ -140,17 +140,15 @@ if file is not None:
 # If syslog var is not empty then send responses out via syslog
 if syslog is not None:
 
-#Create you logger. Please note that this logger is different from  ArcSight logger.
+# Create the logger
     my_logger = logging.getLogger('MyLogger')
 
-#We will pass the message as INFO
+# We will pass the message as INFO
     my_logger.setLevel(logging.INFO)
 
 # Define SyslogHandler
-# X.X.X.X =IP Address of the Syslog Collector(Connector Appliance,Loggers  etc.)
 # 514 = Syslog port , You need to specify the port which you have defined ,by default it is 514 for Syslog)
     handler = logging.handlers.SysLogHandler(address = (syslog,514))
-    #handler = logging.handlers.SysLogHandler(address = '/dev/log')
 
 # Apply handler to my_logger
     my_logger.addHandler(handler)
@@ -186,5 +184,4 @@ if syslog is not None:
 # Iterate over each tuple in the list and write them to a file:
                 for item in sorted_list:
                     syslog_message=syslog_message+str(item[0])+"="+str(item[1])+","
-                    #my_logger.info("{}={},".format(item[0],item[1]))
                 my_logger.info(syslog_message)
