@@ -12,8 +12,8 @@ import platform
 import time
 import operator
 
-if sys.version_info<(2,7,0):
-   sys.stderr.write("You need python 2.7+ or later to run this script\n")
+if sys.version_info<(3,0,0):
+   sys.stderr.write("You need python 3 or later to run this script\n")
    exit(1)
 
 
