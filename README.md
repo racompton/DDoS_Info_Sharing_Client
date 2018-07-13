@@ -4,6 +4,9 @@ The DDoS Info Sharing Project is a centralized database of DDoS attack source IP
 This python script retrieves the list of DDoS attacks that occured the last X number of days and writes it to a file (-f), writes it to syslog (-l) or outputs it to the terminal (if -f or -l are not set).
 The output of this script is in the CEF format of field1=value1, field2=value2, etc.  The RESTful API by default outputs as JSON.
 
+Example usage:
+get_ddos_info.py -k <key> -u <username> -d <number of days to query> -l <limit results to x, 0 means don't limit> -f <output filename>
+
 ## Attack type shows:
 ### Only Total Traffic
 Ignore, could be spoofed traffic (false positive)
