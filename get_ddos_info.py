@@ -130,7 +130,7 @@ if file is not None:
                 for item in sorted_list:
                     text_file.write("{}={},".format(item[0],item[1]))
                 text_file.write('\n')
-# Sleep for 2/10th of a second so that splunk will see each new line as a new log entry
+# Sleep for 2/10th of a second so that the syslog server will see each new line as a new log entry
                 time.sleep(.2)
 
 # Close the log file
