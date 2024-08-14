@@ -29,6 +29,10 @@ Traffic is highly likely not spoofed and customer has an open SNMP server (UDP p
 Traffic is highly likely not spoofed and customer has an open NTP server (UDP port 123) responding to monlist or version requests connected directly to the Internet.   Recommended to contact customer and have them disable responding to monlist or version requests on their NTP server.
 https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks/
 It is very less likely that the CPE has an issue and would need to have the firmware upgraded or replaced with another device.  
+### Memcached Amplification
+Traffic is highly likely not spoofed and customer has an open Memcached server (UDP port 11211) responding to monlist or version requests connected directly to the Internet.   Recommended to contact customer and have them disable UDP Memcached on their server.
+https://www.digitalocean.com/community/tutorials/how-to-secure-memcached-by-reducing-exposure
+It is very less likely that the CPE has an issue and would need to have the firmware upgraded or replaced with another device.  
 ### rpcbind Amplification
 Traffic is highly likely not spoofed and customer has an open rpcbind server (UDP port 111) responding to requests connected directly to the Internet.  
 ### mDNS Amplification
